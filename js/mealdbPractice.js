@@ -1,12 +1,13 @@
-const searchFood = _ => {
-    const searchField = document.getElementById("search-field");
+const searchFood = () => {
+    // get input
+    const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    // clear data
+    // // clear search field
     searchField.value = "";
     // search result
     if (searchText == "") {
         const searchResult = document.getElementById("search-result");
-        searchResult.innerHTML = "";
+        searchResult.textContent = "";
         const div = document.createElement('div');
         div.classList.add("mx-auto");
         div.innerHTML = "<h5>Write something to search...</h5>";
@@ -22,7 +23,7 @@ const searchFood = _ => {
 };
 const displaySearchResult = meals => {
     const searchResult = document.getElementById("search-result");
-    searchResult.innerHTML = "";
+    searchResult.textContent = "";
     if (meals == null) {
         const div = document.createElement('div');
         div.classList.add("mx-auto");
@@ -38,7 +39,7 @@ const displaySearchResult = meals => {
                     <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${meal.strMeal}</h5>
-                    <p class="card-text">${meal.strInstructions.slice(0, 200)}</p>
+                    <p class="card-text">${meal.strInstructions.slice(0, 170)}</p>
                 </div>
             </div>
             `;
@@ -46,14 +47,15 @@ const displaySearchResult = meals => {
         })
     }
 };
-const mealDetail = (mealId => {
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
+const mealDetail = mealId => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayMealDetail(data.meals[0]));
-});
+};
 const displayMealDetail = meal => {
     const mealDetails = document.getElementById("meal-details");
+    mealDetails.textContent = "";
     const div = document.createElement('div');
     div.classList.add("card");
     div.innerHTML = `
