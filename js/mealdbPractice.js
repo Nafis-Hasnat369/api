@@ -21,6 +21,15 @@ const searchFood = async () => {
         displaySearchResult(data.meals);
     }
 };
+// button to work
+const button = document.getElementById("button-search");
+const searchField = document.getElementById('search-field');
+searchField.addEventListener("keypress", event => {
+    if (event.keyCode == 13) {
+        button.click();
+    }
+});
+
 const displaySearchResult = meals => {
     const searchResult = document.getElementById("search-result");
     searchResult.textContent = "";
