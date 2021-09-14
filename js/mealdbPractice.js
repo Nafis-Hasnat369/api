@@ -25,7 +25,7 @@ const searchFood = async () => {
 const button = document.getElementById("button-search");
 const searchField = document.getElementById('search-field');
 searchField.addEventListener("keypress", event => {
-    if (event.keyCode == 13) {
+    if (event.key === "Enter") {
         button.click();
     }
 });
